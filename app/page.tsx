@@ -19,7 +19,7 @@ export default function Home() {
         {categories.map((category: string, index: number) => {
           return (
             <li key={index}>
-              <Link href={`/collections/${category}`}>{category}</Link>
+              <p>{category}</p>
             </li>
           );
         })}
