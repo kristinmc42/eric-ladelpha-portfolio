@@ -1,14 +1,29 @@
-import Image from 'next/image'
+import Image from "next/image";
+import Link from "next/link";
+
+// This is the Main page
 
 export default function Home() {
+  const categories = [
+    "portraits",
+    "landscapeViews",
+    "urbanViews",
+    "variousCompositions",
+    "drawings",
+  ];
+
   return (
     <>
-    <header>
-
-    </header>
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Eric LaDelpha</h1>
-    </main>
+      <h2>Collections</h2>
+      <ul>
+        {categories.map((category: string, index: number) => {
+          return (
+            <li key={index}>
+              <Link href={`/collections/${category}`}>{category}</Link>
+            </li>
+          );
+        })}
+      </ul>
     </>
-  )
+  );
 }
