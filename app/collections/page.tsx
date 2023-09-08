@@ -9,10 +9,10 @@ export default async function Collection() {
     return <div>
         <h1>Collections</h1>
         { 
-            artwork.map((art: any) => {
+            artwork.map((art: any, index:number) => {
                 console.log(art)
                 return (
-                    <p>{art.title}</p>
+                    <p key={index}>{art.title}</p>
                 )
             })
         }
