@@ -10,7 +10,7 @@ export type RuleType = {
     error: (error: string) => RuleType;
     warning: (warning: string) => RuleType;
   }
-
+  
 export default {
     name: 'artwork',
     type: 'document',
