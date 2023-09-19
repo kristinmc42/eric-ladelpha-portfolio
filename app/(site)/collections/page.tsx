@@ -1,19 +1,16 @@
-"use client" 
+"use client";
 
-import { getArtByCollection, getArtwork } from "@/sanity/sanity-utils";
-import { TabGroup, TabList, TabPanel, TabPanels, Tab } from "../components/Tabs";
+import {
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tab,
+} from "../components/Tabs";
 import classNames from "classnames";
-import Gallery from "../components/Gallery";
-
-//types
-import { ArtType } from "@/sanity/sanity-utils";
-
+import Link from "next/link";
 
 const tabs = [
-  {
-    key: "all",
-    display: "All",
-  },
   {
     key: "portraits",
     display: "Portraits",
@@ -36,20 +33,7 @@ const tabs = [
   },
 ];
 
-
-
 export default async function Collections() {
-    const artwork:ArtType[] = await getArtwork();
-
-    const portraits:ArtType[] = await getArtByCollection("portraits");
-  
-    const landscapeViews:ArtType[] = await getArtByCollection("landscapeViews");
-  
-    const urbanViews:ArtType[] = await getArtByCollection("landscapeViews");
-  
-    const variousCompositions:ArtType[] = await getArtByCollection("variousCompositions");
-  
-    const drawings:ArtType[] = await getArtByCollection("drawings");
   return (
     <TabGroup defaultIndex={0}>
       <TabList className="flex items-center gap-12">
@@ -72,49 +56,15 @@ export default async function Collections() {
         })}
       </TabList>
       <TabPanels className="h-full h-full max-w-[900px] w-full p-2 sm:p-4 my-6">
-        <TabPanel className="overflow-auto">
-          <Gallery artwork={artwork} />
-        </TabPanel>
-        <TabPanel>
-          <Gallery artwork={portraits} />
-        </TabPanel>
-        <TabPanel>
-          <Gallery artwork={landscapeViews} />
-        </TabPanel>
-        <TabPanel>
-          <Gallery artwork={urbanViews} />
-        </TabPanel>
-        <TabPanel>
-          <Gallery artwork={variousCompositions} />
-        </TabPanel>
-        <TabPanel>
-          <Gallery artwork={drawings} />
-        </TabPanel>
+        {tabs.map((tab: { key: string; display: string }, index: number) => {
+         
+          return (
+            <TabPanel className="overflow-auto">
+              <Link href={`/collections/${tab.key}`} key={index} className="flex place-content-center">{tab.display}</Link>
+            </TabPanel>
+          );
+        })}
       </TabPanels>
     </TabGroup>
   );
 }
-
-// import { getArtwork } from "@/sanity/sanity-utils";
-// import CollectionTabs from "../components/CollectionTabs";
-// import Image from "next/image";
-
-// export default async function Collection() {
-//   const artwork = await getArtwork();
-
-//   return (
-//     <div className="flex flex-col items-center h-full">
-//       {/* <CollectionTabs /> */}
-//       {artwork.map((art: any, index: number) => {
-//         // console.log(art);
-//           return(
-//           <div className="border">
-//               <p key={index+art.title}>{art.title}</p>
-//               <p key={index+art.category}>{art.category}</p>
-//               <p key={index}>{art.description}</p>
-//               <img src={art.image} alt={art.title} key={index+"img"}/>
-//         </div>)
-//       })}
-//     </div>
-//   );
-// }

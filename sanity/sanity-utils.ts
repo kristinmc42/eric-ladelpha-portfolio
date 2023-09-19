@@ -1,3 +1,4 @@
+import { PortableTextBlock } from "sanity";
 import { client } from "./lib/client";
 import { groq } from "next-sanity";
 
@@ -8,7 +9,7 @@ export type ArtType = {
   slug: string;
   category: string;
   image: string;
-  description: string;
+  description: PortableTextBlock[];
 };
 
 export async function getArtwork():Promise<ArtType[]> {
@@ -26,6 +27,7 @@ export async function getArtwork():Promise<ArtType[]> {
 }
 
 export async function getArtByCollection(selctedCategory: string):Promise<ArtType[]>  {
+
   switch (selctedCategory) {
     case "portraits":
       return client.fetch(

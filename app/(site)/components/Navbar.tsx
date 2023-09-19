@@ -4,6 +4,9 @@ import { DisclosureButton, DisclosurePanel, Disclosure } from "./Disclosure";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const activeClass = "border-neutral-400 border-2 rounded-lg h-full inline-flex items-center px-2 py-1 font-bold hover:border-neutral-900 hover:rounded-lg hover:text-neutral-900";
+const normalClass = "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium hover:border-neutral-900 hover:rounded-lg hover:text-neutral-900";
+
 export default function Navbar() {
   let pathname = usePathname() || "/";
   return (
@@ -26,8 +29,8 @@ export default function Navbar() {
                       prefetch
                       className={`${
                         pathname === "/"
-                          ? "border-neutral-300 border-2 rounded-lg  h-full inline-flex items-center px-2 py-1 font-bold"
-                          : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                          ? activeClass
+                          : normalClass
                       }`}
                     >
                       Home
@@ -38,9 +41,9 @@ export default function Navbar() {
                       href="/collections"
                       prefetch
                       className={`${
-                        pathname === "/collections"
-                          ? "border-neutral-300 border-2 rounded-lg h-full inline-flex items-center px-2 py-1 font-bold"
-                          : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                        pathname.includes("/collections")  
+                        ? activeClass
+                        : normalClass
                       }`}
                     >
                       Collections
@@ -52,8 +55,8 @@ export default function Navbar() {
                       prefetch
                       className={`${
                         pathname === "/contact"
-                          ? "border-neutral-300 border-2 rounded-lg  h-full inline-flex items-center px-2 py-1 font-bold"
-                          : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                        ? activeClass
+                        : normalClass
                       }`}
                     >
                       Contact
@@ -109,8 +112,8 @@ export default function Navbar() {
                   prefetch
                   className={`${
                     pathname === "/"
-                      ? "border-neutral-300 border-2 rounded-lg h-full inline-flex items-center px-2 py-1 font-bold"
-                      : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                    ? activeClass
+                    : normalClass
                   }`}
                 >
                   Home
@@ -121,9 +124,9 @@ export default function Navbar() {
                   href="/collections"
                   prefetch
                   className={`${
-                    pathname === "/collections"
-                      ? "border-neutral-300 border-2 rounded-lg h-full inline-flex items-center px-2 py-1 font-bold"
-                      : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                    pathname.includes("/collections")
+                    ? activeClass
+                    : normalClass
                   }`}
                 >
                   Collections
@@ -135,8 +138,8 @@ export default function Navbar() {
                   prefetch
                   className={`${
                     pathname === "/contact"
-                      ? "border-neutral-300 border-2 rounded-lg h-full inline-flex items-center px-2 py-1 font-bold"
-                      : "border-transparent border-2 inline-flex items-center px-2 py-1 border- font-medium"
+                    ? activeClass
+                    : normalClass
                   }`}
                 >
                   Contact

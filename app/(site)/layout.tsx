@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true} className="font-sans">
       <body className={inter.className}>
+        <header>
         <Navbar />
+        </header>
         <main className="flex min-h-screen flex-col items-center justify-evenly p-24  bg-neutral-300">{children}</main>
       </body>
     </html>
