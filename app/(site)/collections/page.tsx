@@ -59,7 +59,7 @@ export default async function Collections() {
         {tabs.map((tab: { key: string; display: string }, index: number) => {
          
           return (
-            <TabPanel className="overflow-auto">
+            <TabPanel className="overflow-auto" key={`tab${index}`}>
               <Link href={`/collections/${tab.key}`} key={index} className="flex place-content-center">{tab.display}</Link>
             </TabPanel>
           );
